@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sai Fabrication Shop</title>
+  <meta name="description" content="Sai Fabrication Shop – Professional fabrication services in Mumbai. Steel works, gates, grills, welding and custom fabrication." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #f59e0b;
+      --bg: #ffffff;
+      --text: #1f2937;
+      --card: #f3f4f6;
+      --nav: #ffffff;
+    }
+
+    body.dark {
+      --bg: #0f172a;
+      --text: #e5e7eb;
+      --card: #1e293b;
+      --nav: #020617;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body { background: var(--bg); color: var(--text); transition: 0.3s; }
+
+    /* Navbar */
+    header { position: sticky; top: 0; z-index: 1000; background: var(--nav); box-shadow: 0 2px 15px rgba(0,0,0,0.15); }
+
+    .nav { max-width: 1200px; margin: auto; padding: 1rem; display: flex; align-items: center; justify-content: space-between; }
+
+    .logo { font-size: 1.7rem; font-weight: 700; color: var(--primary); }
+
+    .menu-btn { display: none; font-size: 1.8rem; cursor: pointer; }
+
+    .nav-links { display: flex; gap: 2rem; }
+
+    .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; position: relative; }
+
+    .nav-links a::after { content: ""; position: absolute; width: 0; height: 2px; background: var(--primary); left: 0; bottom: -5px; transition: 0.3s; }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    .controls button { margin-left: 0.5rem; padding: 0.4rem 0.7rem; border: none; border-radius: 6px; cursor: pointer; background: var(--card); color: var(--text); }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1518770660439-4636190af475');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 9rem 1rem;
+    }
+
+    .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+
+    section { max-width: 1200px; margin: auto; padding: 6rem 1.5rem; }
+
+    .section-title { text-align: center; margin-bottom: 3rem; }
+
+    .section-title h2 { font-size: 2.2rem; color: var(--primary); }
+
+    /* Services */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 3.5rem 2.5rem;
+      border-radius: 18px;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-14px) scale(1.05);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+
+    .card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    .card:hover { transform: translateY(-8px); }
+
+    /* Gallery */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      filter: brightness(1.1) contrast(1.05);
+    }
+
+    /* Contact */
+    .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+
+    iframe { width: 100%; height: 300px; border-radius: 12px; border: 0; }
+
+    footer { background: var(--card); text-align: center; padding: 1.5rem; }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .menu-btn { display: block; }
+      .nav-links { position: absolute; top: 70px; right: 0; background: var(--nav); flex-direction: column; width: 200px; padding: 1rem; display: none; }
+      .nav-links.active { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">Sai Fabrication</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <nav class="nav-links" id="menu">
+      <a href="#home" data-en="Home" data-mr="मुख्यपृष्ठ">Home</a>
+      <a href="#services" data-en="Services" data-mr="सेवा">Services</a>
+      <a href="#gallery" data-en="Gallery" data-mr="कामाची गॅलरी">Gallery</a>
+      <a href="#contact" data-en="Contact" data-mr="संपर्क">Contact</a>
+    </nav>
+    <div class="controls">
+      <button onclick="toggleLang()">🌐</button>
+      <button onclick="toggleTheme()">🌓</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home" data-aos="fade-up">
+  <h1 data-en="Sai Fabrication Shop" data-mr="साई फॅब्रिकेशन शॉप">Sai Fabrication Shop</h1>
+  <p data-en="Trusted and professional fabrication services for homes and industries." data-mr="घरगुती व औद्योगिक वापरासाठी विश्वासार्ह आणि दर्जेदार फॅब्रिकेशन सेवा.">Trusted and professional fabrication services for homes and industries.</p>
+</section>
+
+<section id="services" style="padding-top:7rem; padding-bottom:7rem;">
+  <div class="section-title" data-aos="fade-up">
+    <h2 data-en="Our Services" data-mr="आमच्या सेवा">Our Services</h2>
+  </div>
+  <div class="services" data-aos="fade-up" data-aos-delay="100">
+    <div class="card" data-aos="flip-left" data-aos-duration="1200" data-en="Steel Gates & Doors" data-mr="स्टील गेट्स आणि दरवाजे">Steel Gates & Doors</div>
+    <div class="card" data-aos="flip-left" data-aos-duration="1200" data-en="Safety Grills & Railings" data-mr="सुरक्षा ग्रिल्स आणि रेलिंग">Safety Grills & Railings</div>
+    <div class="card" data-aos="flip-left" data-aos-duration="1200" data-en="Industrial Welding Works" data-mr="औद्योगिक वेल्डिंग काम">Industrial Welding Works</div>
+    <div class="card" data-aos="flip-left" data-aos-duration="1200" data-en="Custom Fabrication Projects" data-mr="कस्टम फॅब्रिकेशन प्रकल्प">Custom Fabrication Projects</div>
+  </div>
+</section>
+
+<section id="gallery" style="padding-top:7rem; padding-bottom:7rem;">
+  <div class="section-title" data-aos="fade-up">
+    <h2 data-en="Our Projects" data-mr="आमचे प्रकल्प">Our Projects</h2>
+    <p data-aos="fade-up" data-aos-delay="150" data-en="Some of our recent fabrication works" data-mr="आमच्या अलीकडील फॅब्रिकेशन कामांची झलक">Some of our recent fabrication works</p>
+  </div>
+  <div class="gallery" style="gap:1.8rem;" data-aos="fade-up" data-aos-delay="200">
+    <img data-aos="zoom-in" data-aos-delay="100" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd">
+    <img data-aos="zoom-in" data-aos-delay="200" src="gate.jpg">
+    <img data-aos="zoom-in" data-aos-delay="300" src="grill.jpg">
+    <img data-aos="zoom-in" data-aos-delay="400" src="gate2.jpg">
+    <img data-aos="zoom-in" data-aos-delay="500" src="Weld-Shop.jpg">
+    <img data-aos="zoom-in" data-aos-delay="600" src="jina.jpg">
+    <img data-aos="zoom-in" data-aos-delay="700" src="welder-erecting-technical-steel.jpg">
+    <img data-aos="zoom-in" data-aos-delay="800" src="windo.jpg">
+  </div>
+</section>
+
+<section id="contact" style="padding-top:7rem; padding-bottom:7rem;">
+  <div class="section-title" data-aos="fade-up">
+    <h2 data-en="Contact Us" data-mr="आमच्याशी संपर्क साधा">Contact Us</h2>
+  </div>
+  <div class="contact">
+    <div data-aos="fade-right">
+      <p data-en="📍 Phulambri 431111, Chh. Sambhajinagar" data-mr="📍 फुलंब्री ४३११११, छत्रपती संभाजीनगर">📍 Mumbai, Maharashtra</p>
+      <p data-en="📞 Phone: +91 XXXXXXXXXX" data-mr="📞 फोन: +91 XXXXXXXXXX">📞 Phone: +91 XXXXXXXXXX</p>
+      <p data-en="📧 Email: saifabrication@gmail.com" data-mr="📧 ईमेल: saifabrication@gmail.com">📧 Email: saifabrication@gmail.com</p>
+    </div>
+    <iframe src="https://www.google.com/maps?q=Sai%20Fabrication%20Khultabad%20Road%20Phulambri%20431111&output=embed" data-aos="fade-left"></iframe>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sai Fabrication Shop | All Rights Reserved</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1200, easing: 'ease-in-out', once: true });
+
+  let currentLang = 'en';
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'mr' : 'en';
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = el.getAttribute('data-' + currentLang);
+    });
+  }
+
+  function toggleTheme() {
+    document.body.classList.toggle('dark');
+  }
+
+  function toggleMenu() {
+    document.getElementById('menu').classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
+
